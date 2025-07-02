@@ -1,0 +1,24 @@
+{
+  "name": "crid-smart-contract",
+  "version": "1.0.0",
+  "description": "Contrato inteligente para gerenciamento de CRID (Confirmação de Registro de Inscrição em Disciplinas)",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "coverage": "hardhat coverage",
+    "deploy": "hardhat run scripts/deploy.js --network localhost"
+  },
+  "keywords": ["CRID", "smart-contract", "blockchain", "ethereum"],
+  "author": "Lucas Tavares",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "@openzeppelin/contracts": "^5.0.0",
+    "chai": "^4.3.10",
+    "ethers": "^6.7.1",
+    "hardhat": "^2.18.1",
+    "hardhat-gas-reporter": "^1.0.9",
+    "solidity-coverage": "^0.8.5"
+  }
+} 

@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+
+# Hardhat files
+cache/
+artifacts/
+
+# Coverage
+coverage/
+coverage.json
+
+# Typechain
+typechain/
+typechain-types/
+
+# Hardhat Ignition
+ignition/deployments/
+
+# Dotenv files
+.env
+.env.local
+.env.production
+
+# Testing
+test-results/
+gas-report.txt
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Build
+dist/
+build/
+
+# Slither
+slither-output.json 
