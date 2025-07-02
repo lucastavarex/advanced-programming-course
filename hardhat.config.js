@@ -1,6 +1,12 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("solidity-coverage");
 require("hardhat-gas-reporter");
+// Plugin de documentação (instalado no CI)
+try {
+  require("@primitivefi/hardhat-dodoc");
+} catch (e) {
+  // Plugin não instalado localmente - normal
+}
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -26,5 +32,11 @@ module.exports = {
     localhost: {
       url: "http://127.0.0.1:8545"
     }
+  },
+  dodoc: {
+    runOnCompile: true,
+    debugMode: false,
+    outputDir: "docs",
+    exclude: ["test"]
   }
 }; 

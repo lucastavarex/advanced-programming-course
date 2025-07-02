@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: write
+  actions: read
+  checks: write
+
 jobs:
   test:
     name: Testes Unitários e Coverage
@@ -225,7 +230,7 @@ jobs:
         tar -czf contract-artifacts.tar.gz release/
 
     - name: Criar Release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       with:
         files: contract-artifacts.tar.gz
         tag_name: v${{ github.run_number }}
@@ -242,6 +247,4 @@ jobs:
           - ABIs
           - Relatórios de testes
         draft: false
-        prerelease: false
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        prerelease: false 
