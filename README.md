@@ -158,24 +158,17 @@ O pipeline executa Slither para análise estática de segurança em cada push.
 - Loops eficientes para cálculo de totais
 - Armazenamento mínimo de dados on-chain
 
-## 🤝 Contribuindo
-
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
 ## 📝 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
-## 👨‍💻 Autor
+## 👨‍💻 Autores
 
-Lucas Tavares da Silva Ferreira - Engenharia de Computação e Informação - UFRJ
+Lucas Tavares da Silva Ferreira 
+Vaz
 
 ## 🙏 Agradecimentos
 
-- Professor do curso de Programação Avançada
-- Documentação do Solidity e exemplos de micropagamentos
-- Comunidade OpenZeppelin pelos contratos base 
+- Cláudio Miceli, Professor do curso de Programação Avançada
+- [Documentação do Solidity](https://docs.soliditylang.org/en/v0.8.30/)
+
