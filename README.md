@@ -138,6 +138,10 @@ Os testes cobrem:
 - ✅ Controle de acesso
 - ✅ Proteção contra replay attacks
 - ✅ Casos extremos (múltiplas disciplinas, valores variados)
+![image](https://github.com/user-attachments/assets/aef539e4-424e-4d74-8294-82ffa992ef4b)
+![image](https://github.com/user-attachments/assets/9559b0c6-005a-40f8-a2cb-544f9576303a)
+
+
 
 ## 🔍 Segurança
 
