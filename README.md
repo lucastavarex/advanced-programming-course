@@ -93,6 +93,8 @@ O projeto possui um pipeline completo de CI/CD usando GitHub Actions que executa
 6. **Deploy Automático**: Para testnet (branch develop) 
 7. **Documentação**: Geração automática de docs
 8. **Release**: Criação de releases com artefatos
+![image](https://github.com/user-attachments/assets/18a942fe-3d7d-4ddf-8865-93f6b94812e3)
+
 
 ## 🔐 Decisões de Design
 
