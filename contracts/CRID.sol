@@ -91,7 +91,7 @@ contract CRID is Ownable {
         uint16 totalHoras = 0;
         uint8 totalCreditos = 0;
         
-        for (uint i = 0; i < _disciplinas.length; i++) {
+        for (uint256 i = 0; i < _disciplinas.length; i++) {
             totalHoras += _disciplinas[i].cargaHoraria;
             totalCreditos += _disciplinas[i].creditos;
         }
@@ -111,7 +111,7 @@ contract CRID is Ownable {
         novoRegistro.aluno.dataEmissao = block.timestamp;
         
         // Adiciona disciplinas
-        for (uint i = 0; i < _disciplinas.length; i++) {
+        for (uint256 i = 0; i < _disciplinas.length; i++) {
             novoRegistro.disciplinas.push(_disciplinas[i]);
         }
         
@@ -124,6 +124,45 @@ contract CRID is Ownable {
         hashesValidos[hashDocumento] = true;
         
         emit CRIDRegistrado(_infoAluno.matricula, _infoAluno.periodo, hashDocumento);
+    }
+
+    /**
+     * @dev Verifica se um CRID é autêntico
+     * @param _matricula Matrícula do aluno
+     * @param _periodo Período do CRID
+     * @param _assinatura Assinatura a ser verificada
+     * @return true se o CRID é autêntico
+     */
+    function verificarAutenticidade(
+        string memory _matricula,
+        uint8 _periodo,
+        bytes memory _assinatura
+    ) external returns (bool) {
+        RegistroCRID[] memory registros = registrosPorMatricula[_matricula];
+        
+        for (uint256 i = 0; i < registros.length; i++) {
+            if (registros[i].aluno.periodo == _periodo) {
+                bool valido = keccak256(registros[i].assinatura) == keccak256(_assinatura);
+                emit CRIDVerificado(_matricula, valido);
+                return valido;
+            }
+        }
+        
+        emit CRIDVerificado(_matricula, false);
+        return false;
+    }
+
+    /**
+     * @dev Atualiza o endereço da secretaria acadêmica
+     * @param _novaSecretaria Novo endereço da secretaria
+     */
+    function atualizarSecretaria(address _novaSecretaria) 
+        external 
+        onlyOwner 
+    {
+        require(_novaSecretaria != address(0), "Endereco invalido");
+        secretariaAcademica = _novaSecretaria;
+        emit SecretariaAtualizada(_novaSecretaria);
     }
 
     /**
@@ -156,29 +195,16 @@ contract CRID is Ownable {
     }
 
     /**
-     * @dev Verifica se um CRID é autêntico
+     * @dev Retorna o total de CRIDs registrados para uma matrícula
      * @param _matricula Matrícula do aluno
-     * @param _periodo Período do CRID
-     * @param _assinatura Assinatura a ser verificada
-     * @return true se o CRID é autêntico
+     * @return Quantidade de CRIDs
      */
-    function verificarAutenticidade(
-        string memory _matricula,
-        uint8 _periodo,
-        bytes memory _assinatura
-    ) external returns (bool) {
-        RegistroCRID[] memory registros = registrosPorMatricula[_matricula];
-        
-        for (uint i = 0; i < registros.length; i++) {
-            if (registros[i].aluno.periodo == _periodo) {
-                bool valido = keccak256(registros[i].assinatura) == keccak256(_assinatura);
-                emit CRIDVerificado(_matricula, valido);
-                return valido;
-            }
-        }
-        
-        emit CRIDVerificado(_matricula, false);
-        return false;
+    function quantidadeCRIDs(string memory _matricula) 
+        external 
+        view 
+        returns (uint256) 
+    {
+        return registrosPorMatricula[_matricula].length;
     }
 
     /**
@@ -192,19 +218,6 @@ contract CRID is Ownable {
         returns (bool) 
     {
         return hashesValidos[_hashDocumento];
-    }
-
-    /**
-     * @dev Atualiza o endereço da secretaria acadêmica
-     * @param _novaSecretaria Novo endereço da secretaria
-     */
-    function atualizarSecretaria(address _novaSecretaria) 
-        external 
-        onlyOwner 
-    {
-        require(_novaSecretaria != address(0), "Endereco invalido");
-        secretariaAcademica = _novaSecretaria;
-        emit SecretariaAtualizada(_novaSecretaria);
     }
 
     /**
@@ -224,7 +237,7 @@ contract CRID is Ownable {
             _infoAluno.periodo
         );
         
-        for (uint i = 0; i < _disciplinas.length; i++) {
+        for (uint256 i = 0; i < _disciplinas.length; i++) {
             dadosCompletos = abi.encodePacked(
                 dadosCompletos,
                 _disciplinas[i].codigo,
@@ -235,18 +248,5 @@ contract CRID is Ownable {
         }
         
         return keccak256(dadosCompletos);
-    }
-
-    /**
-     * @dev Retorna o total de CRIDs registrados para uma matrícula
-     * @param _matricula Matrícula do aluno
-     * @return Quantidade de CRIDs
-     */
-    function quantidadeCRIDs(string memory _matricula) 
-        external 
-        view 
-        returns (uint256) 
-    {
-        return registrosPorMatricula[_matricula].length;
     }
 } 

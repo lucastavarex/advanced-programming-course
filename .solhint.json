@@ -8,13 +8,6 @@
     "reason-string": ["warn", {"maxLength": 64}],
     "constructor-syntax": "error",
     "quotes": ["error", "double"],
-    "const-name-snakecase": "error",
-    "contract-name-camelcase": "error",
-    "event-name-camelcase": "error",
-    "func-name-mixedcase": "error",
-    "func-param-name-mixedcase": "error",
-    "modifier-name-mixedcase": "error",
-    "var-name-mixedcase": "error",
     "imports-on-top": "error",
     "ordering": "error",
     "visibility-modifier-order": "error",
@@ -24,7 +17,6 @@
     "avoid-throw": "error",
     "avoid-tx-origin": "error",
     "check-send-result": "error",
-    "func-visibility": "error",
     "multiple-sends": "error",
     "no-complex-fallback": "error",
     "no-inline-assembly": "off",
@@ -32,6 +24,9 @@
     "reentrancy": "error",
     "state-visibility": "error",
     "no-empty-blocks": "error",
-    "no-unused-vars": "error"
+    "no-unused-vars": "error",
+    "no-global-import": "off",
+    "gas-custom-errors": "off",
+    "explicit-types": "off"
   }
 } 
