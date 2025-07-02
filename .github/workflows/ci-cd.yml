@@ -13,10 +13,10 @@ jobs:
     
     steps:
     - name: Checkout do código
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Configurar Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18'
         cache: 'npm'
@@ -36,7 +36,7 @@ jobs:
       run: npm run coverage
 
     - name: Upload do relatório de cobertura
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v4
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/lcov.info
@@ -59,10 +59,10 @@ jobs:
     
     steps:
     - name: Checkout do código
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Configurar Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18'
         cache: 'npm'
@@ -78,7 +78,7 @@ jobs:
       run: slither contracts/CRID.sol --json slither-output.json || true
 
     - name: Upload relatório Slither
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: slither-report
         path: slither-output.json
@@ -89,10 +89,10 @@ jobs:
     
     steps:
     - name: Checkout do código
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Configurar Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18'
         cache: 'npm'
@@ -113,10 +113,10 @@ jobs:
     
     steps:
     - name: Checkout do código
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Configurar Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18'
         cache: 'npm'
@@ -130,7 +130,7 @@ jobs:
         REPORT_GAS: true
 
     - name: Upload relatório de gas
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: gas-report
         path: gas-report.txt
@@ -143,10 +143,10 @@ jobs:
     
     steps:
     - name: Checkout do código
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Configurar Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18'
         cache: 'npm'
@@ -171,10 +171,10 @@ jobs:
     
     steps:
     - name: Checkout do código
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Configurar Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18'
         cache: 'npm'
@@ -189,7 +189,7 @@ jobs:
       run: npx hardhat dodoc
 
     - name: Upload documentação
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: contract-documentation
         path: docs/
@@ -202,10 +202,10 @@ jobs:
     
     steps:
     - name: Checkout do código
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Configurar Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18'
         cache: 'npm'
