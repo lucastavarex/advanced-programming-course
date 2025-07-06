@@ -171,7 +171,7 @@ Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes
 ## 👨‍💻 Autores
 
 Lucas Tavares da Silva Ferreira<br>
-Leonardo Vaz
+Leonardo de Oliveira Silva Vaz
 
 ## 🙏 Agradecimentos
 
